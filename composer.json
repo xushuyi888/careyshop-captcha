@@ -1,16 +1,16 @@
 {
-    "name": "dnyz520/careyshop-captcha",
+    "name": "xushuyi/careyshop-captcha",
     "description": "The CareyShop Captcha Package",
     "license": "AGPL-3.0",
     "authors": [
         {
             "name": "careyshop",
-            "email": "dnyz520@126.com"
+            "email": "xushuyi@126.com"
         }
     ],
     "require": {
-        "php": ">=7.1.0",
-        "topthink/framework": "^6.0.0"
+        "php": ">=8.0.0",
+        "topthink/framework": "^8.0.0"
     },
     "autoload": {
         "psr-4": {
