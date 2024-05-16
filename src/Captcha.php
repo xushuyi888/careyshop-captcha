@@ -183,6 +183,10 @@ class Captcha
         return true;
     }
 
+    private function rand_float($min, $max) {
+        return $min + mt_rand() / mt_getrandmax() * ($max - $min);
+    }
+
     /**
      * 输出验证码
      * @param string|array|null $config
@@ -242,11 +246,12 @@ class Captcha
         $text = $this->useZh ? preg_split('/(?<!^)(?!$)/u', $generator['value']) : str_split($generator['value']); // 验证码
 
         foreach ($text as $index => $char) {
-            $x     = $this->fontSize * ($index + 1) * mt_rand(1.2, 1.6) * ($this->math ? 1 : 1.5);
+//            $x     = $this->fontSize * ($index + 1) * mt_rand(1.2, 1.6) * ($this->math ? 1 : 1.5);
+            $x =  $this->fontSize * ($index + 1) *  $this->rand_float(1.2, 1.6) ;
             $y     = $this->fontSize + mt_rand(10, 20);
             $angle = $this->math ? 0 : mt_rand(-40, 40);
 
-            imagettftext($this->im, $this->fontSize, $angle, $x, $y, $this->color, $fontttf, $char);
+            imagettftext($this->im, $this->fontSize, $angle, intval($x), intval($y), $this->color, $fontttf, $char);
         }
 
         ob_start();
